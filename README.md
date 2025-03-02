@@ -2,6 +2,10 @@
 
 A simple typing game built with React.js, TypeScript, and Tailwind CSS where users can test and improve their typing speed and accuracy.
 
+## Live Demo
+
+[Try the Typing Game here](https://typing-game-hd74.vercel.app/)
+
 ## Features
 
 - Random word typing challenges
@@ -11,6 +15,7 @@ A simple typing game built with React.js, TypeScript, and Tailwind CSS where use
 - Multiple difficulty levels (easy, medium, hard)
 - Final score display
 - Real-time character feedback (correct/incorrect highlighting)
+- Sound effects for game events (correct words, incorrect words, game start/end)
 
 ## Setup Instructions
 
@@ -64,6 +69,14 @@ The core game logic is implemented using custom React hooks:
 - **Medium**: Intermediate-length words
 - **Hard**: Longer, more complex words
 
+## Sound Effects
+
+The game includes audio feedback for a more immersive experience:
+- Sound plays when a word is typed correctly
+- Different sound plays when a word is typed incorrectly
+- Game start sound effect
+- Game over sound effect
+
 ## Design Approach
 
 The application is built with the following principles in mind:
@@ -77,6 +90,10 @@ The application is built with the following principles in mind:
 4. **Responsive Design**: The UI is responsive and works well on various screen sizes thanks to Tailwind CSS.
 
 5. **Modern React Patterns**: The application uses functional components and React hooks throughout.
+
+## Deployment
+
+The application is deployed on Vercel. You can view the live version at [https://typing-game-hd74.vercel.app/](https://typing-game-hd74.vercel.app/)
 
 ## Future Enhancements
 
