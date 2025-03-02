@@ -6,7 +6,6 @@ interface WordDisplayProps {
 }
 
 const WordDisplay: React.FC<WordDisplayProps> = ({ word, userInput }) => {
-  // Split word into characters to highlight correctly/incorrectly typed characters
   const chars = word.split('');
   const inputChars = userInput.split('');
   

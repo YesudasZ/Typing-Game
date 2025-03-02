@@ -8,7 +8,6 @@ interface TimerProps {
 const Timer: React.FC<TimerProps> = ({ timeLeft, totalTime }) => {
   const percentage = (timeLeft / totalTime) * 100;
   
-  // Determine color based on time left
   const getColor = () => {
     if (percentage > 60) return 'bg-green-500';
     if (percentage > 30) return 'bg-yellow-500';

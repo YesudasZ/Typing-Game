@@ -1,54 +1,91 @@
-# React + TypeScript + Vite
+# Rapid Typing Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple typing game built with React.js, TypeScript, and Tailwind CSS where users can test and improve their typing speed and accuracy.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Random word typing challenges
+- Real-time accuracy tracking
+- Words per minute (WPM) calculation
+- 60-second countdown timer
+- Multiple difficulty levels (easy, medium, hard)
+- Final score display
+- Real-time character feedback (correct/incorrect highlighting)
 
-## Expanding the ESLint configuration
+## Setup Instructions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+- Node.js (v14 or later)
+- npm (v6 or later)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/YesudasZ/Typing-Game.git
+cd typing-game
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Install dependencies:
+```bash
+npm install
 ```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to:
+```
+http://localhost:5173
+```
+
+## Project Structure
+
+The project follows a modular architecture to promote maintainability and reusability:
+
+- **components/**: UI components (GameBoard, Timer, WordDisplay, etc.)
+- **hooks/**: Custom React hooks for game logic
+- **utils/**: Utility functions (score calculation, word lists, etc.)
+- **types/**: TypeScript interfaces and type definitions
+
+## Game Logic
+
+The core game logic is implemented using custom React hooks:
+
+- **useTypingGame**: Main game controller that manages the game state
+- **useTimer**: Handles the countdown timer
+- **useWordGenerator**: Generates random words based on difficulty
+
+## Difficulty Levels
+
+- **Easy**: Shorter, common words
+- **Medium**: Intermediate-length words
+- **Hard**: Longer, more complex words
+
+## Design Approach
+
+The application is built with the following principles in mind:
+
+1. **Component Reusability**: Each UI element is a separate component that can be reused and tested independently.
+
+2. **Custom Hooks**: Game logic is separated into custom hooks to separate concerns and improve testability.
+
+3. **TypeScript**: Type safety is ensured through TypeScript interfaces and proper type definitions.
+
+4. **Responsive Design**: The UI is responsive and works well on various screen sizes thanks to Tailwind CSS.
+
+5. **Modern React Patterns**: The application uses functional components and React hooks throughout.
+
+## Future Enhancements
+
+- User accounts and high score tracking
+- Multiplayer functionality
+- More game modes (time attack, word marathon, etc.)
+- Additional animations and visual feedback
+- Custom word lists or categories
+
+## License
+
+MIT

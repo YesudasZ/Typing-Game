@@ -16,7 +16,6 @@ const GameBoard: React.FC = () => {
     handleKeyDown
   } = useTypingGame();
   
-  // Set focus on input when game starts
   useEffect(() => {
     if (gameState.status === 'playing') {
       const inputElement = document.querySelector('input');

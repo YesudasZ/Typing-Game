@@ -4,13 +4,12 @@ import { useWordGenerator } from './useWordGenerator';
 import { useTimer } from './useTimer';
 import { calculateAccuracy } from '../utils/calculateAccuracy';
 import { calculateScore } from '../utils/calculateScore';
-// import useSound from 'use-sound';
+import useSound from 'use-sound';
 
-// You would need to add sound files to your public folder
-// const correctSound = '/sounds/correct.mp3';
-// const incorrectSound = '/sounds/incorrect.mp3';
-// const gameOverSound = '/sounds/game-over.mp3';
-// const gameStartSound = '/sounds/game-start.mp3';
+const correctSound = '/sounds/correct.mp3';
+const incorrectSound = '/sounds/incorrect.mp3';
+const gameOverSound = '/sounds/game-over.mp3';
+const gameStartSound = '/sounds/game-start.mp3';
 
 export const useTypingGame = () => {
   const [gameState, setGameState] = useState<GameState>({
@@ -22,14 +21,13 @@ export const useTypingGame = () => {
     wordsTyped: 0,
     correctTyped: 0,
     difficulty: 'medium',
-    timeLeft: 60 // 60 seconds
+    timeLeft: 60 
   });
   
-  // Uncomment for sound effects
-  // const [playCorrect] = useSound(correctSound);
-  // const [playIncorrect] = useSound(incorrectSound);
-  // const [playGameOver] = useSound(gameOverSound);
-  // const [playGameStart] = useSound(gameStartSound);
+  const [playCorrect] = useSound(correctSound);
+  const [playIncorrect] = useSound(incorrectSound);
+  const [playGameOver] = useSound(gameOverSound);
+  const [playGameStart] = useSound(gameStartSound);
   
   const { getRandomWord } = useWordGenerator(gameState.difficulty);
   
@@ -41,20 +39,18 @@ export const useTypingGame = () => {
         prev.wordsTyped, 
         prev.accuracy, 
         prev.difficulty,
-        60 - prev.timeLeft // Time spent = total time - time left
+        60 - prev.timeLeft 
       )
     }));
-    // Uncomment for sound effects
-    // playGameOver();
-  }, [/* playGameOver */]);
+    playGameOver();
+  }, [playGameOver ]);
   
   const { timeLeft, resetTimer } = useTimer({
     initialTime: 60,
     onTimeUp: handleGameOver,
     isActive: gameState.status === 'playing'
   });
-  
-  // Update timeLeft in gameState when timer changes
+
   useEffect(() => {
     setGameState(prev => ({ ...prev, timeLeft }));
   }, [timeLeft]);
@@ -72,9 +68,8 @@ export const useTypingGame = () => {
       score: 0
     }));
     resetTimer();
-    // Uncomment for sound effects
-    // playGameStart();
-  }, [getRandomWord, resetTimer/* , playGameStart */]);
+    playGameStart();
+  }, [getRandomWord, resetTimer, playGameStart ]);
   
   const resetGame = useCallback(() => {
     setGameState({
@@ -106,12 +101,11 @@ export const useTypingGame = () => {
       const newCorrectTyped = isCorrect ? prev.correctTyped + 1 : prev.correctTyped;
       const newAccuracy = calculateAccuracy(newCorrectTyped, newWordsTyped);
       
-      // Uncomment for sound effects
-      // if (isCorrect) {
-      //   playCorrect();
-      // } else {
-      //   playIncorrect();
-      // }
+      if (isCorrect) {
+        playCorrect();
+      } else {
+        playIncorrect();
+      }
       
       return {
         ...prev,
@@ -122,7 +116,7 @@ export const useTypingGame = () => {
         accuracy: newAccuracy
       };
     });
-  }, [getRandomWord/* , playCorrect, playIncorrect */]);
+  }, [getRandomWord , playCorrect, playIncorrect ]);
   
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && gameState.inputValue.trim() !== '' && gameState.status === 'playing') {

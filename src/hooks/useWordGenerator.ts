@@ -8,7 +8,6 @@ export const useWordGenerator = (difficulty: 'easy' | 'medium' | 'hard') => {
     const words = wordLists[difficulty];
     const availableWords = words.filter(word => !usedWords.has(word));
     
-    // If we've used all words, reset the used words set
     if (availableWords.length === 0) {
       setUsedWords(new Set());
       return words[Math.floor(Math.random() * words.length)];
